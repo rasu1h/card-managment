@@ -29,3 +29,9 @@ springdoc:
     path: /swagger
   api-docs:
     path: /v3/api-docs
+
+crypto:
+  aes-key: zK9dP3R8Q4mF1n7xL2S5T6Y8U0VJHABC
+
+jwt:
+  secret: mG3xN8n4Wq7R8FvQZ2ZC8nqv6b9+2s8wM5YQJr7nEw0=
