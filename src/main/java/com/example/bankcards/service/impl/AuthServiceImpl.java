@@ -6,7 +6,7 @@ import com.example.bankcards.entity.Role;
 import com.example.bankcards.entity.User;
 import com.example.bankcards.repository.UserRepository;
 import com.example.bankcards.service.AuthService;
-import com.example.bankcards.service.CustomUserDetailsService;
+import com.example.bankcards.security.CustomUserDetailsService;
 import com.example.bankcards.util.JwtUtil;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

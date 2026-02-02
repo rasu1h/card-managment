@@ -1,6 +1,5 @@
-package com.example.bankcards.config;
+package com.example.bankcards.security;
 
-import com.example.bankcards.service.CustomUserDetailsService;
 import com.example.bankcards.util.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
