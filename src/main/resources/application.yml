@@ -18,20 +18,52 @@ spring:
     properties:
       hibernate:
         format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
 
   liquibase:
     enabled: true
     change-log: classpath:db/migration/db.changelog-master.yaml
 
+# OpenAPI/Swagger Configuration
 springdoc:
-  swagger-ui:
-    enabled: true
-    path: /swagger
   api-docs:
-    path: /v3/api-docs
+    path: /api-docs
+    enabled: true
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+    operations-sorter: method
+    tags-sorter: alpha
+    try-it-out-enabled: true
+    disable-swagger-default-url: true
+    display-request-duration: true
+    groups-order: DESC
+    doc-expansion: none
+    default-models-expand-depth: 1
+    default-model-expand-depth: 1
+  show-actuator: false
 
+# CORS Configuration (origins for API docs, frontend, etc.)
+app:
+  cors:
+    allowed-origins: http://localhost:8080,http://localhost:3000,http://127.0.0.1:8080,http://127.0.0.1:3000
+  admin:
+    registration:
+      code: ADMIN_SECRET_2024
+
+# Crypto Configuration
 crypto:
   aes-key: zK9dP3R8Q4mF1n7xL2S5T6Y8U0VJHABC
 
+# JWT Configuration
 jwt:
   secret: mG3xN8n4Wq7R8FvQZ2ZC8nqv6b9+2s8wM5YQJr7nEw0=
+  expiration: 86400000 # 24 hours in milliseconds
+
+# Logging Configuration
+logging:
+  level:
+    com.example.bankcards: DEBUG
+    org.springframework.security: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE

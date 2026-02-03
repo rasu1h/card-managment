@@ -708,7 +708,8 @@ class BankCardsIntegrationTest {
 
             mockMvc.perform(post("/auth/register/admin")
                     .contentType(MediaType.APPLICATION_JSON)
-                    .content(objectMapper.writeValueAsString(adminRequest)));
+                    .content(objectMapper.writeValueAsString(adminRequest)))
+                    .andExpect(status().isCreated());
 
             AuthRequest adminLogin = AuthRequest.builder()
                     .username("test_admin")
@@ -719,6 +720,7 @@ class BankCardsIntegrationTest {
             MvcResult adminLoginResult = mockMvc.perform(post("/auth/login")
                             .contentType(MediaType.APPLICATION_JSON)
                             .content(objectMapper.writeValueAsString(adminLogin)))
+                    .andExpect(status().isOk())
                     .andReturn();
 
             AuthResponse adminAuthResponse = objectMapper.readValue(
@@ -764,12 +766,15 @@ class BankCardsIntegrationTest {
             MvcResult result1 = mockMvc.perform(post("/api/v1/cards/admin/create")
                             .header("Authorization", "Bearer " + adminToken)
                             .param("ownerId", userId.toString()))
+                    .andExpect(status().isCreated())
                     .andReturn();
 
             String responseBody1 = result1.getResponse().getContentAsString();
             SuccessResponse<?> response1 = objectMapper.readValue(responseBody1, SuccessResponse.class);
+            Object data1 = response1.getData();
+            assertThat(data1).as("Admin create card response must contain data").isNotNull();
             cardId1 = objectMapper.convertValue(
-                    ((java.util.LinkedHashMap) response1.getData()).get("id"),
+                    ((java.util.LinkedHashMap) data1).get("id"),
                     Long.class
             );
 
@@ -777,12 +782,15 @@ class BankCardsIntegrationTest {
             MvcResult result2 = mockMvc.perform(post("/api/v1/cards/admin/create")
                             .header("Authorization", "Bearer " + adminToken)
                             .param("ownerId", userId.toString()))
+                    .andExpect(status().isCreated())
                     .andReturn();
 
             String responseBody2 = result2.getResponse().getContentAsString();
             SuccessResponse<?> response2 = objectMapper.readValue(responseBody2, SuccessResponse.class);
+            Object data2 = response2.getData();
+            assertThat(data2).as("Admin create card response must contain data").isNotNull();
             cardId2 = objectMapper.convertValue(
-                    ((java.util.LinkedHashMap) response2.getData()).get("id"),
+                    ((java.util.LinkedHashMap) data2).get("id"),
                     Long.class
             );
         }

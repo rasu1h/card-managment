@@ -2,6 +2,12 @@ databaseChangeLog:
   - changeSet:
       id: 001-create-users-table
       author: bank-cards
+      preConditions:
+        - onFail: MARK_RAN
+          onError: MARK_RAN
+        - not:
+            tableExists:
+              tableName: users
       changes:
         - createTable:
             tableName: users

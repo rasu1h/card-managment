@@ -16,5 +16,22 @@ services:
       timeout: 5s
       retries: 5
 
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bank_app
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/bank
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 13502
+      JWT_SECRET: mG3xN8n4Wq7R8FvQZ2ZC8nqv6b9+2s8wM5YQJr7nEw0=
+      CRYPTO_AES_KEY: zK9dP3R8Q4mF1n7xL2S5T6Y8U0VJHABC
+    depends_on:
+      postgres:
+        condition: service_healthy
+
 volumes:
   postgres_data:

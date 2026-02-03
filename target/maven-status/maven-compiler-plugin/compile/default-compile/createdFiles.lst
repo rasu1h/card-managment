@@ -54,6 +54,7 @@ com\example\bankcards\util\TransactionMapper.class
 com\example\bankcards\dto\response\CardResponse$CardResponseBuilder.class
 com\example\bankcards\dto\response\TransactionResponse$TransactionCardInfo.class
 com\example\bankcards\dto\requests\SearchCardRequest$SearchCardRequestBuilder.class
+com\example\bankcards\config\CorsConfig.class
 com\example\bankcards\dto\response\CardResponse$CardOwnerInfo$CardOwnerInfoBuilder.class
 com\example\bankcards\dto\response\SuccessResponse$SuccessResponseBuilder.class
 com\example\bankcards\exception\CardNotActiveException.class
