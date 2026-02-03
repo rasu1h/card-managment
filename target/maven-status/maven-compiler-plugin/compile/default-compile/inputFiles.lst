@@ -18,6 +18,7 @@ C:\Github\TechnicallTask\Bank\bank_rest\src\main\java\com\example\bankcards\dto\
 C:\Github\TechnicallTask\Bank\bank_rest\src\main\java\com\example\bankcards\exception\BusinessException.java
 C:\Github\TechnicallTask\Bank\bank_rest\src\main\java\com\example\bankcards\dto\response\CardCreatedResponse.java
 C:\Github\TechnicallTask\Bank\bank_rest\src\main\java\com\example\bankcards\service\impl\TransactionsServiceImpl.java
+C:\Github\TechnicallTask\Bank\bank_rest\src\main\java\com\example\bankcards\util\YearMonthAttributeConverter.java
 C:\Github\TechnicallTask\Bank\bank_rest\src\main\java\com\example\bankcards\service\CardService.java
 C:\Github\TechnicallTask\Bank\bank_rest\src\main\java\com\example\bankcards\repository\TransactionRepository.java
 C:\Github\TechnicallTask\Bank\bank_rest\src\main\java\com\example\bankcards\config\OpenApiConfig.java

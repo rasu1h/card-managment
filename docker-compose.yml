@@ -1,7 +1,9 @@
 services:
   postgres:
-    image: postgres:15-alpine
+    image: postgres:15.3-alpine
     container_name: bank_postgres
+    restart: unless-stopped
+    user: postgres  # Добавить эту строку
     environment:
       POSTGRES_DB: bank
       POSTGRES_USER: postgres
@@ -12,26 +14,38 @@ services:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres -d bank"]
-      interval: 5s
+      interval: 10s
       timeout: 5s
       retries: 5
+      start_period: 10s
+    networks:
+      - bank-network
 
   app:
     build:
       context: .
       dockerfile: Dockerfile
     container_name: bank_app
+    restart: unless-stopped
     ports:
       - "8080:8080"
     environment:
+      SPRING_PROFILES_ACTIVE: docker
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/bank
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: 13502
       JWT_SECRET: mG3xN8n4Wq7R8FvQZ2ZC8nqv6b9+2s8wM5YQJr7nEw0=
       CRYPTO_AES_KEY: zK9dP3R8Q4mF1n7xL2S5T6Y8U0VJHABC
+      ADMIN_CODE: ADMIN_SECRET_2024
     depends_on:
       postgres:
         condition: service_healthy
+    networks:
+      - bank-network
 
 volumes:
   postgres_data:
+
+networks:
+  bank-network:
+    driver: bridge

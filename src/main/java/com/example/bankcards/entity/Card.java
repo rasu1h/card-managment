@@ -1,4 +1,5 @@
 package com.example.bankcards.entity;
+import com.example.bankcards.util.YearMonthAttributeConverter;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -41,7 +42,8 @@ public class Card {
     /**
      * Срок действия
      */
-    @Column(name = "expiry_date", nullable = false)
+    @Column(name = "expiry_date", nullable = false, length = 7)
+    @Convert(converter = YearMonthAttributeConverter.class)
     private YearMonth expiryDate;
 
     /**
