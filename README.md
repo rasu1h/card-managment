@@ -26,24 +26,16 @@ Backend-приложение на Java (Spring Boot) для управления
 Запуск PostgreSQL и приложения одной командой (JAR собирается внутри Docker):
 
 ```bash
-git clone <url-репозитория>
+git clone <repository-url>
 cd bank_rest
 
+# Запустить через Docker Compose
 docker-compose up -d --build
 ```
 
 Приложение будет доступно по адресу: **http://localhost:8080**  
 Swagger UI: **http://localhost:8080/swagger**
 
-### Вариант 1б: Docker Compose — только PostgreSQL
-
-Если нужно запускать приложение локально через Maven:
-
-```bash
-docker-compose up -d postgres
-# Подождите 5–10 сек, затем:
-mvn spring-boot:run
-```
 
 ### Вариант 2: Локальная PostgreSQL
 
