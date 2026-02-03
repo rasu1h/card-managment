@@ -3,7 +3,9 @@ package com.example.bankcards.dto.requests;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+import lombok.Builder;
 
+@Builder
 public record AuthRequest(
 
         @NotBlank

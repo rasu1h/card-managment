@@ -27,6 +27,7 @@ import java.math.BigDecimal;
 @Validated
 @Tag(name = "Cards", description = "API для управления банковскими картами")
 @SecurityRequirement(name = "Bearer Authentication")
+
 public class CardController {
 
     private final CardService cardService;

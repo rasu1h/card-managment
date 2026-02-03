@@ -2,10 +2,10 @@ package com.example.bankcards.dto.requests;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
+@Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class SearchCardRequest {
 
     @Pattern(regexp = "^[0-9]{4}$", message = "Последние 4 цифры должны содержать ровно 4 цифры")
