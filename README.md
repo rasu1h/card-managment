@@ -26,7 +26,7 @@ Backend-приложение на Java (Spring Boot) для управления
 Запуск PostgreSQL и приложения одной командой (JAR собирается внутри Docker):
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/rasu1h/card-managment.git
 cd bank_rest
 
 # Запустить через Docker Compose
