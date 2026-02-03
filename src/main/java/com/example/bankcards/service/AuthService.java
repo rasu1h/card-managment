@@ -6,4 +6,5 @@ import com.example.bankcards.dto.response.AuthResponse;
 public interface AuthService {
      void register(AuthRequest request) ;
      AuthResponse login(AuthRequest request);
+     Long getUserIdFromAuthentication();
 }

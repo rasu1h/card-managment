@@ -62,4 +62,10 @@ public class AuthServiceImpl implements AuthService {
 
         return new AuthResponse(token);
     }
+
+    @Override
+    public Long getUserIdFromAuthentication() {
+
+       return 1L;
+    }
 }

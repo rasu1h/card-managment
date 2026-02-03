@@ -1,16 +1,26 @@
 package com.example.bankcards.service;
 
-import com.example.bankcards.entity.Card;
-import org.springframework.data.domain.Pageable;
+
+import com.example.bankcards.dto.response.CardBalanceResponse;
+import com.example.bankcards.dto.response.CardResponse;
+import com.example.bankcards.dto.response.PageResponse;
 
 import java.math.BigDecimal;
-import java.time.YearMonth;
-import java.util.List;
+
+import java.math.BigDecimal;
 
 public interface CardService {
-     Card createCard(Long ownerId, String cardNumber, YearMonth expiryDate, BigDecimal balance);
-     void blockCard(Long cardId);
-    void activateCard(Long cardId);
-    List<Card> getUserCards(Long ownerId, Pageable pageable);
-    List<Card> getAllCards(Pageable pageable);
-    }
+    // ADMIN operations
+    CardResponse createCard(Long ownerId);
+    CardResponse blockCard(Long cardId, String reason);
+    CardResponse activateCard(Long cardId);
+    void deleteCard(Long cardId);
+    PageResponse<CardResponse> getAllCards(int page, int size);
+    void topUpCard(Long cardId, BigDecimal amount);
+
+    // USER operations
+    CardResponse requestCardBlock(Long userId, Long cardId, String reason);
+    PageResponse<CardResponse> getUserCards(Long userId, int page, int size);
+    CardBalanceResponse getCardBalance(Long userId, Long cardId);
+    PageResponse<CardResponse> searchUserCards(Long userId, String lastFour, int page, int size);
+}
